@@ -61,6 +61,7 @@ class UserAdmin(BaseUserAdmin):
     # that reference specific fields on auth.User.
     list_display = ('id', 'email', 'is_superuser', 'is_admin', 'is_staff')
     list_filter = ('is_admin',)
+    readonly_fields = ('email',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('first_name', 'last_name', 'cellphone')}),
