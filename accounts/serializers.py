@@ -24,4 +24,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
         if user.is_joined:
             (group, is_created) = Group.objects.get_or_create(name='Propietarios')
             group.user_set.add(user)
+        else:
+            (group, is_created) = Group.objects.get_or_create(name='Suscritos')
+            group.user_set.add(user)
         return user
