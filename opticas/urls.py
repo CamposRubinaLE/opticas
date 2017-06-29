@@ -16,16 +16,23 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import url, include, static
 from django.contrib import admin
+from django.urls import reverse, reverse_lazy
+from django.views.generic import RedirectView
 from django.views.static import serve
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^', include('services.urls', 'services')),
+    url(r'^', include('accounts.urls', 'accounts')),
+    url(r'^docs/', include('rest_framework_docs.urls')),
+    url(r'^$', RedirectView.as_view(url=reverse_lazy('admin:index'))),
 ]
 urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 admin.site.site_header = "Ópticas Panel"
 admin.site.site_title = "Ópticas"

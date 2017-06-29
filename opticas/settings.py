@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'services',
     'rest_framework',
     'corsheaders',
+    'django_filters',
+    'rest_framework_docs',
 ]
 
 MIDDLEWARE = [
@@ -143,7 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 AUTH_USER_MODEL = 'accounts.User'
-JET_DEFAULT_THEME = 'light-gray'
 JET_SIDE_MENU_COMPACT = True
 
 REST_FRAMEWORK = {
